@@ -1,0 +1,14 @@
+{
+  "name": "token-icons",
+  "version": "0.1.0-alpha.1",
+  "private": true,
+  "dependencies": {
+    "fs-extra": "^10.1.0"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.js"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.1"
+  }
+}
