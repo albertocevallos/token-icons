@@ -1004,16 +1004,6 @@ const TokenIcon = ({ icon, openModal, setData }) => {
             style={{ objectPosition: 'center' }}
           />
         </button>
-        {/* <img
-          alt="icon"
-          src={`https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/ethereum/assets/${icon.id}/logo.png`}
-          onError={(e) => {
-            e.target.className = 'replace'
-            e.target.src =
-              'https://raw.githubusercontent.com/feathericons/feather/master/icons/help-circle.svg'
-          }}
-          loading="lazy"
-        /> */}
 
         <Transition
           as={Fragment}
@@ -1148,12 +1138,6 @@ function Modal({ isOpen, data, closeModal, openModal }) {
                   <div className="mt-2">
                     <p className="text-sm text-gray-900"> Address</p>
                     <p className="text-sm text-gray-500">
-                      <Link
-                        href={data.explorer}
-                        className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
-                      >
-                        <span className="ml-4">here</span>
-                      </Link>
                       <a href={data.explorer} target="_blank">
                         {data.id}
                       </a>
@@ -1166,10 +1150,14 @@ function Modal({ isOpen, data, closeModal, openModal }) {
                   </div>
                   <div className="mt-2">
                     <p className="text-sm text-gray-900"> Website</p>
-                    <p className="text-sm text-gray-500">{data.website}</p>
+                    <p className="text-sm text-gray-500">
+                      <a href={data.website} target="_blank">
+                        {data.website}
+                      </a>
+                    </p>{' '}
                   </div>
 
-                  <div className="mt-6 flex items-center justify-center">
+                  <div className="mt-10 flex items-center justify-center">
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
@@ -1207,7 +1195,8 @@ export default function Home() {
   const update = async () => {
     const res = await fetch(baseUrl)
     const json = await res.json()
-    setIcons(json.slice(0, 100))
+    console.log(json)
+    setIcons(json)
   }
 
   function closeModal() {
