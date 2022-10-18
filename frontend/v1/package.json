@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "npm run build && next export"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.6.6",
+    "@reach/alert": "^0.11.0",
+    "autoprefixer": "^10.2.6",
+    "clsx": "^1.1.1",
+    "file-loader": "^6.2.0",
+    "heroicons": "^1.0.6",
+    "match-sorter": "^4.2.0",
+    "next": "^11.0.1",
+    "postcss": "^8.3.5",
+    "raw-loader": "^4.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "simple-functional-loader": "^1.2.1",
+    "tailwindcss": "^3.1.8",
+    "zustand": "^3.0.1"
+  }
+}
