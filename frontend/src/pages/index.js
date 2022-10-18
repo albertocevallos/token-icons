@@ -8,6 +8,10 @@ import { tags } from '@/data/tags'
 
 const ethereumUrl =
   'https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/ethereum/metadata.json'
+const arbitrumUrl =
+  'https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/arbitrum/metadata.json'
+const polygonUrl =
+  'https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/polygon/metadata.json'
 
 function Logo(props) {
   return (
@@ -60,7 +64,7 @@ function ShareButton({ children = 'Share on Twitter' }) {
   )
 }
 
-function Header({ icons }) {
+function Header({ ethereumIcons, arbitrumIcons, polygonIcons }) {
   return (
     <header className="relative overflow-hidden bg-slate-50 pt-6">
       <Image
@@ -125,7 +129,7 @@ function Header({ icons }) {
               A free, up-to-date collection of ERC-20 icons.
             </h1>
             <div className="order-first flex items-center justify-center gap-4 text-[0.8125rem] leading-6 text-slate-500 lg:justify-start">
-              <p>{`${icons.length} icons`}</p>
+              <p>{`${ethereumIcons.length} icons`}</p>
               <svg
                 viewBox="0 0 2 2"
                 aria-hidden="true"
@@ -325,7 +329,7 @@ function Glow(props) {
 }
 
 const TabList = forwardRef(function TabList(
-  { enabled = true, selectedIndex, icons },
+  { enabled = true, selectedIndex, ethereumIcons, arbitrumIcons, polygonIcons },
   ref
 ) {
   let List = enabled ? Tab.List : 'div'
@@ -340,7 +344,17 @@ const TabList = forwardRef(function TabList(
       {[
         [
           'Ethereum',
-          `${icons.length} icons`,
+          `${ethereumIcons.length} icons`,
+          'The leading smart contract platform for writing and distributing dapps.',
+        ],
+        [
+          'Arbitrum',
+          `${arbitrumIcons.length} icons`,
+          'The leading smart contract platform for writing and distributing dapps.',
+        ],
+        [
+          'Polygon',
+          `${polygonIcons.length} icons`,
           'The leading smart contract platform for writing and distributing dapps.',
         ],
       ].map(([type, details, description], index) => (
@@ -389,7 +403,7 @@ function TabListSmall({ enabled = true, selectedIndex }) {
       aria-hidden={!enabled}
       className="grid grid-cols-1 gap-0.5 rounded-lg bg-slate-400/10 text-center text-[0.8125rem] font-semibold leading-6 text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.04)] ring-1 ring-slate-900/5"
     >
-      {['Ethereum'].map((type, typeIndex, types) => (
+      {['Ethereum', 'Arbitrum', 'Polygon'].map((type, typeIndex, types) => (
         <Item
           key={type}
           className={clsx(
@@ -740,7 +754,10 @@ function Modal({ isOpen, data, closeModal, openModal }) {
 }
 
 export default function Home() {
-  const [icons, setIcons] = useState([])
+  const [ethereumIcons, setEthereumIcons] = useState([])
+  const [arbitrumIcons, setArbitrumIcons] = useState([])
+  const [polygonIcons, setPolygonIcons] = useState([])
+
   let [isOpen, setIsOpen] = useState(false)
   let [data, setData] = useState()
 
@@ -752,13 +769,26 @@ export default function Home() {
   let [query, setQuery] = useState('')
 
   useEffect(() => {
-    update()
+    updateEth()
+    updateArb()
+    updatePoly()
   }, [])
 
-  const update = async () => {
-    const res = await fetch(ethereumUrl)
-    const json = await res.json()
-    setIcons(json)
+  const updateEth = async () => {
+    const ethRes = await fetch(ethereumUrl)
+    const ethJson = await ethRes.json()
+    setEthereumIcons(ethJson)
+  }
+
+  const updateArb = async () => {
+    const arbRes = await fetch(arbitrumUrl)
+    const arbJson = await arbRes.json()
+    setArbitrumIcons(arbJson)
+  }
+  const updatePoly = async () => {
+    const polyRes = await fetch(polygonUrl)
+    const polyJson = await polyRes.json()
+    setPolygonIcons(polyJson)
   }
 
   function closeModal() {
@@ -817,7 +847,11 @@ export default function Home() {
 
   return (
     <>
-      <Header icons={icons} />
+      <Header
+        ethereumIcons={ethereumIcons}
+        arbitrumIcons={arbitrumIcons}
+        polygonIcons={polygonIcons}
+      />
       <main>
         <Tab.Group>
           {({ selectedIndex }) => (
@@ -879,23 +913,35 @@ export default function Home() {
                   ref={tabListRef}
                   enabled={isLg && !scrolled}
                   selectedIndex={selectedIndex}
-                  icons={icons}
+                  ethereumIcons={ethereumIcons}
+                  arbitrumIcons={arbitrumIcons}
+                  polygonIcons={polygonIcons}
                 />
                 <Tab.Panels>
                   <Tab.Panel className="focus:outline-none">
                     <Icons
-                      icons={icons}
+                      icons={ethereumIcons}
                       query={query}
                       openModal={openModal}
                       setData={setData}
                     />
                   </Tab.Panel>
-                  {/* <Tab.Panel className="focus:outline-none">
-                    <Icons icons={icons2} query={query} />
+                  <Tab.Panel className="focus:outline-none">
+                    <Icons
+                      icons={arbitrumIcons}
+                      query={query}
+                      openModal={openModal}
+                      setData={setData}
+                    />
                   </Tab.Panel>
                   <Tab.Panel className="focus:outline-none">
-                    <Icons icons={icons3} query={query} />
-                  </Tab.Panel> */}
+                    <Icons
+                      icons={polygonIcons}
+                      query={query}
+                      openModal={openModal}
+                      setData={setData}
+                    />
+                  </Tab.Panel>
                 </Tab.Panels>
                 <footer className="flex flex-col items-center justify-between gap-10 border-t border-slate-400/20 pt-10 pb-20 sm:flex-row">
                   <p className="flex items-center gap-3 text-[0.8125rem] leading-6 text-slate-900">
