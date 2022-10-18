@@ -24,32 +24,36 @@ function MyApp({ Component, pageProps }) {
           href={require('@/images/favicon-16x16.png').default.src}
         />
         <meta
-          content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
+          content="Free, up-to-date set of ERC-20 icons for your dapp."
           name="description"
         />
-        <meta property="og:url" content="https://heroicons.com" />
+        <meta property="og:url" content="https://tokenicons.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Heroicons" />
+        <meta property="og:site_name" content="Token Icons" />
         <meta
           property="og:description"
-          content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
+          content="Free, up-to-date set of ERC-20 icons for your dapp."
         />
-        <title>Heroicons</title>
-        <meta property="og:title" content="Heroicons" />
+        <title>Token Icons</title>
+        <meta property="og:title" content="Token Icons" />
         <meta
           property="og:image"
-          content={`https://heroicons.com${require('@/images/social-card.jpg').default.src}`}
+          content={`https://tokenicons.com${
+            require('@/images/social-card.jpg').default.src
+          }`}
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@tailwindlabs" />
-        <meta name="twitter:title" content="Heroicons" />
+        <meta name="twitter:site" content="@albertocevalls" />
+        <meta name="twitter:title" content="Token Icons" />
         <meta
           name="twitter:description"
-          content="Beautiful hand-crafted SVG icons, by the makers of Tailwind CSS."
+          content="Free, up-to-date set of ERC-20 icons for your dapp."
         />
         <meta
           name="twitter:image"
-          content={`https://heroicons.com${require('@/images/social-card.jpg').default.src}`}
+          content={`https://tokenicons.com${
+            require('@/images/social-card.jpg').default.src
+          }`}
         />
       </Head>
       <Component {...pageProps} />
