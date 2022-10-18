@@ -6,8 +6,8 @@ import Image from 'next/future/image'
 import { matchSorter } from 'match-sorter'
 import { tags } from '@/data/tags'
 
-const baseUrl =
-  'https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/data/metadata.json'
+const ethereumUrl =
+  'https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/ethereum/metadata.json'
 
 function Logo(props) {
   return (
@@ -341,7 +341,7 @@ const TabList = forwardRef(function TabList(
         [
           'Ethereum',
           `${icons.length} icons`,
-          'For primary navigation and marketing sections, with an outlined appearance.',
+          'The leading smart contract platform for writing and distributing dapps.',
         ],
       ].map(([type, details, description], index) => (
         <div
@@ -756,9 +756,8 @@ export default function Home() {
   }, [])
 
   const update = async () => {
-    const res = await fetch(baseUrl)
+    const res = await fetch(ethereumUrl)
     const json = await res.json()
-    console.log(json)
     setIcons(json)
   }
 
