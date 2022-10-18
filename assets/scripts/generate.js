@@ -27,7 +27,14 @@ const getMetadata = async (parentPath) => {
     const sortdMetaData = await Promise.all(
       locales.map(async (name) => {
         const dir = path.join(pagePrefix, name);
-        return { name, assets: await getMetadata(dir) };
+        const metadata = await getMetadata(dir);
+        const writeTo = path.join(
+          __dirname,
+          `../blockchains/${name}/`,
+          `metadata.json`
+        );
+        await fs.writeJson(writeTo, metadata);
+        return { name, assets: metadata };
       })
     );
 

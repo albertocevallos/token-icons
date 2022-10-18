@@ -29,13 +29,13 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property="og:url" content="https://tokenicons.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Token Icons" />
+        <meta property="og:site_name" content="TokenIcons" />
         <meta
           property="og:description"
           content="Free, up-to-date set of ERC-20 icons for your dapp."
         />
-        <title>Token Icons</title>
-        <meta property="og:title" content="Token Icons" />
+        <title>TokenIcons</title>
+        <meta property="og:title" content="TokenIcons" />
         <meta
           property="og:image"
           content={`https://tokenicons.com${
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@albertocevalls" />
-        <meta name="twitter:title" content="Token Icons" />
+        <meta name="twitter:title" content="TokenIcons" />
         <meta
           name="twitter:description"
           content="Free, up-to-date set of ERC-20 icons for your dapp."
