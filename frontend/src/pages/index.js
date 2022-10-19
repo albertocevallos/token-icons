@@ -170,38 +170,6 @@ function Header({ ethereumIcons, arbitrumIcons, polygonIcons }) {
                   priority
                   unoptimized
                 />
-                {/* <svg
-                  viewBox="0 0 24 24"
-                  strokeWidth=".895"
-                  aria-hidden="true"
-                  className="h-6 w-6"
-                >
-                  <path
-                    d="M11.554 4v-.447H8.738a2.553 2.553 0 1 0 0 5.105H11.554V4Z"
-                    fill="#DF5A33"
-                    stroke="#DF5A33"
-                  />
-                  <path
-                    d="M11.554 9.895v-.448H8.738a2.553 2.553 0 0 0 0 5.106H11.554V9.895Z"
-                    fill="#985CF7"
-                    stroke="#985CF7"
-                  />
-                  <path
-                    d="M11.554 15.79v-.448H8.738a2.553 2.553 0 0 0 0 5.105h.132a2.684 2.684 0 0 0 2.684-2.684V15.79Z"
-                    fill="#5ECC89"
-                    stroke="#5ECC89"
-                  />
-                  <path
-                    d="M15.262 9.447a2.553 2.553 0 1 1 0 5.106h-.263a2.553 2.553 0 0 1 0-5.106h.263Z"
-                    fill="#57B9F8"
-                    stroke="#57B9F8"
-                  />
-                  <path
-                    d="M12.446 4v-.447H15.262a2.553 2.553 0 1 1 0 5.105H12.446V4Z"
-                    fill="#EE7A69"
-                    stroke="#EE7A69"
-                  />
-                </svg> */}
                 Install the package
               </Button>
             </div>
@@ -401,7 +369,7 @@ function TabListSmall({ enabled = true, selectedIndex }) {
   return (
     <List
       aria-hidden={!enabled}
-      className="grid grid-cols-1 gap-0.5 rounded-lg bg-slate-400/10 text-center text-[0.8125rem] font-semibold leading-6 text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.04)] ring-1 ring-slate-900/5"
+      className="grid grid-cols-3 gap-0.5 rounded-lg bg-slate-400/10 text-center text-[0.8125rem] font-semibold leading-6 text-slate-600 shadow-[0_1px_2px_rgba(15,23,42,0.04)] ring-1 ring-slate-900/5"
     >
       {['Ethereum', 'Arbitrum', 'Polygon'].map((type, typeIndex, types) => (
         <Item
@@ -498,7 +466,9 @@ function Blur(props) {
   )
 }
 
-function Icons({ icons, query, openModal, setData }) {
+function Icons({ type, icons, query, openModal, setData, setType }) {
+  setType(type)
+
   let filteredIcons = query
     ? matchSorter(icons, query.replace(/\s+/, '-'), { keys: ['name', 'tags'] })
     : icons
@@ -541,6 +511,7 @@ function Icons({ icons, query, openModal, setData }) {
     <div className="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-x-6 gap-y-8 pt-10 pb-16 sm:pt-11 md:pt-12">
       {filteredIcons.map((icon) => (
         <TokenIcon
+          type={type}
           key={icon.name}
           icon={icon}
           openModal={openModal}
@@ -550,7 +521,7 @@ function Icons({ icons, query, openModal, setData }) {
     </div>
   )
 }
-const TokenIcon = ({ icon, openModal, setData }) => {
+const TokenIcon = ({ type, icon, openModal, setData }) => {
   return (
     <div>
       <div className="relative h-[8.5rem]">
@@ -571,7 +542,7 @@ const TokenIcon = ({ icon, openModal, setData }) => {
             className={clsx('transition-transform')}
           />
           <Image
-            src={`https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/ethereum/assets/${icon.id}/logo.png`}
+            src={`https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/${type}/assets/${icon.id}/logo.png`}
             alt="icon"
             className=""
             width={50}
@@ -651,7 +622,7 @@ const TokenIcon = ({ icon, openModal, setData }) => {
   )
 }
 
-function Modal({ isOpen, data, closeModal, openModal }) {
+function Modal({ type, isOpen, data, closeModal, openModal }) {
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center">
@@ -698,7 +669,7 @@ function Modal({ isOpen, data, closeModal, openModal }) {
                   </Dialog.Title>
                   <div className="mt-10 mb-10 flex items-center justify-center">
                     <Image
-                      src={`https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/ethereum/assets/${data.id}/logo.png`}
+                      src={`https://raw.githubusercontent.com/albertocevallos/token-icons/main/assets/blockchains/${type}/assets/${data.id}/logo.png`}
                       alt="icon"
                       className=""
                       width={100}
@@ -760,6 +731,7 @@ export default function Home() {
 
   let [isOpen, setIsOpen] = useState(false)
   let [data, setData] = useState()
+  let [type, setType] = useState('ethereum')
 
   let searchBarRef = useRef()
   let searchInputRef = useRef()
@@ -783,6 +755,7 @@ export default function Home() {
   const updateArb = async () => {
     const arbRes = await fetch(arbitrumUrl)
     const arbJson = await arbRes.json()
+    console.log(arbJson)
     setArbitrumIcons(arbJson)
   }
   const updatePoly = async () => {
@@ -920,26 +893,32 @@ export default function Home() {
                 <Tab.Panels>
                   <Tab.Panel className="focus:outline-none">
                     <Icons
+                      type="ethereum"
                       icons={ethereumIcons}
                       query={query}
                       openModal={openModal}
                       setData={setData}
+                      setType={setType}
                     />
                   </Tab.Panel>
                   <Tab.Panel className="focus:outline-none">
                     <Icons
+                      type="arbitrum"
                       icons={arbitrumIcons}
                       query={query}
                       openModal={openModal}
                       setData={setData}
+                      setType={setType}
                     />
                   </Tab.Panel>
                   <Tab.Panel className="focus:outline-none">
                     <Icons
+                      type="polygon"
                       icons={polygonIcons}
                       query={query}
                       openModal={openModal}
                       setData={setData}
+                      setType={setType}
                     />
                   </Tab.Panel>
                 </Tab.Panels>
@@ -973,6 +952,7 @@ export default function Home() {
         </Tab.Group>
         {isOpen && (
           <Modal
+            type={type}
             isOpen={isOpen}
             data={data}
             closeModal={closeModal}
