@@ -129,7 +129,11 @@ function Header({ ethereumIcons, arbitrumIcons, polygonIcons }) {
               A free, up-to-date collection of ERC-20 icons.
             </h1>
             <div className="order-first flex items-center justify-center gap-4 text-[0.8125rem] leading-6 text-slate-500 lg:justify-start">
-              <p>{`${ethereumIcons.length} icons`}</p>
+              <p>{`${
+                ethereumIcons.length +
+                arbitrumIcons.length +
+                polygonIcons.length
+              } icons`}</p>
               <svg
                 viewBox="0 0 2 2"
                 aria-hidden="true"

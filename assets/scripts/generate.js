@@ -18,6 +18,19 @@ const getMetadata = async (parentPath) => {
   return transform;
 };
 
+const getMap = async (parentPath, name) => {
+  const filePath = path.join(parentPath, "assets");
+  const children = await fs.readdir(filePath);
+  const transform = await Promise.all(
+    children.map(async (item) => {
+      const childPath = path.join(filePath, item) + "/info.json";
+      const content = await fs.readJson(childPath);
+      return { id: content.id, chain: name };
+    })
+  );
+  return transform;
+};
+
 (async () => {
   try {
     const locales = (await fs.readdir(pagePrefix)).filter((name) => {
@@ -28,13 +41,14 @@ const getMetadata = async (parentPath) => {
       locales.map(async (name) => {
         const dir = path.join(pagePrefix, name);
         const metadata = await getMetadata(dir);
+        const map = await getMap(dir, name);
         const writeTo = path.join(
           __dirname,
           `../blockchains/${name}/`,
           `metadata.json`
         );
         await fs.writeJson(writeTo, metadata);
-        return { name, assets: metadata };
+        return { name, assets: map };
       })
     );
 

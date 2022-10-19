@@ -1,0 +1,17 @@
+{
+  "name": "token-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Alberto Cevallos",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^5.7.1",
+    "typescript": "^4.8.4"
+  }
+}
