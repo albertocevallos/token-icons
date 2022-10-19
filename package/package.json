@@ -1,6 +1,6 @@
 {
   "name": "token-icons",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha.1",
   "description": "Package for interacting with tokenicons.org assets.",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
