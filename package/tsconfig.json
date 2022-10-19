@@ -4,7 +4,11 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
-    "strict": true
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
+  "include": ["src"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
