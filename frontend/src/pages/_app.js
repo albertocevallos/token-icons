@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
           href={require('@/images/favicon-16x16.png').default.src}
         />
         <meta
-          content="Free, up-to-date set of ERC-20 icons for your dapp."
+          content="Free, up-to-date ERC-20 icons for your web3 app."
           name="description"
         />
         <meta property="og:url" content="https://tokenicons.com" />
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:site_name" content="TokenIcons" />
         <meta
           property="og:description"
-          content="Free, up-to-date set of ERC-20 icons for your dapp."
+          content="Free, up-to-date ERC-20 icons for your web3 app."
         />
         <title>TokenIcons</title>
         <meta property="og:title" content="TokenIcons" />
@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:title" content="TokenIcons" />
         <meta
           name="twitter:description"
-          content="Free, up-to-date set of ERC-20 icons for your dapp."
+          content="Free, up-to-date ERC-20 icons for your web3 app."
         />
         <meta
           name="twitter:image"
