@@ -952,6 +952,8 @@ export default function Home() {
                         target="_blank"
                         href="https://ethereum.org"
                         className="font-semibold"
+                        without
+                        rel="noreferrer"
                       >
                         ethereum
                       </a>{' '}
