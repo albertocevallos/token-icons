@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:title" content="TokenIcons" />
         <meta
           property="og:image"
-          content={`https://tokenicons.com${
+          content={`https://heroicons.com${
             require('@/images/social-card.jpg').default.src
           }`}
         />
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           name="twitter:image"
-          content={`https://tokenicons.com${
+          content={`https://heroicons.com${
             require('@/images/social-card.jpg').default.src
           }`}
         />
