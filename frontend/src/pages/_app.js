@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
         <meta
           property="og:image"
           content={`https://tokenicons.com${
-            require('@/images/social-card.png').default.src
+            require('@/images/social-card.jpg').default.src
           }`}
         />
         <meta name="twitter:card" content="summary_large_image" />
@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }) {
         <meta
           name="twitter:image"
           content={`https://tokenicons.com${
-            require('@/images/social-card.png').default.src
+            require('@/images/social-card.jpg').default.src
           }`}
         />
       </Head>
