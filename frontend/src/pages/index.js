@@ -166,7 +166,7 @@ function Header({ ethereumIcons, arbitrumIcons, polygonIcons }) {
                 </svg>
                 Documentation
               </Button>
-              <Button href="https://www.figma.com/community/file/1143911270904274171">
+              <Button href="https://www.npmjs.com/package/token-icons">
                 <Image
                   src={require('@/images/npm.png')}
                   alt=""
