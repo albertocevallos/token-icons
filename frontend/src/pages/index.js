@@ -15,7 +15,17 @@ const polygonUrl =
 
 function Logo(props) {
   return (
-    <div>
+    <div className="flex items-center">
+      <Image
+        src={require('@/images/favicon-32x32.png')}
+        alt=""
+        className=""
+        priority
+        unoptimized
+        width={25}
+        height={25}
+        style={{ marginRight: '.5em', borderRadius: '.25em' }}
+      />
       <div className="text-xl font-semibold leading-9 tracking-tight text-slate-900">
         TokenIcons
       </div>
