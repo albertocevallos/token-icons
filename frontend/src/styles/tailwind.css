@@ -16,6 +16,11 @@
   src: url('../fonts/Inter-italic.var.woff2') format('woff2');
 }
 
+/* Add consistent color for hyper links */
+a {
+  color: #7a53ee;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
