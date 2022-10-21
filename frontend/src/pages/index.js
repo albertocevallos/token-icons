@@ -697,11 +697,17 @@ function Modal({ type, isOpen, data, closeModal, openModal }) {
                   </div>
                   <div className="mt-2">
                     <p className="text-sm text-gray-900"> Address</p>
-                    <p className="text-sm text-gray-500">
-                      <a href={data.explorer} target="_blank" rel="noreferrer">
-                        {data.id}
-                      </a>
-                    </p>
+                    <code>
+                      <p className="text-xs text-gray-500">
+                        <a
+                          href={data.explorer}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {data.id}
+                        </a>
+                      </p>
+                    </code>
                   </div>
 
                   <div className="mt-2">
@@ -709,18 +715,18 @@ function Modal({ type, isOpen, data, closeModal, openModal }) {
                     <p className="text-sm text-gray-500">{data.description}</p>
                   </div>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-900"> Website</p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-900">
+                      {' '}
                       <a href={data.website} target="_blank" rel="noreferrer">
-                        {data.website}
+                        Website→
                       </a>
-                    </p>{' '}
+                    </p>
                   </div>
 
                   <div className="mt-10 flex items-center justify-center">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-violet-700 hover:bg-violet-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Got it, thanks!

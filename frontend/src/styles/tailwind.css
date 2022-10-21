@@ -19,3 +19,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add consistent color for hyper links */
+a {
+  color: #7a53ee;
+}
